@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link
+      id="goormstrap-stylesheet"
+      rel="stylesheet"
+      type="text/css"
+      href="https://statics.goorm.io/css/goormstrap.v4.min.css"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -28,6 +34,35 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
+      // NOTE: 🙆‍♂️🙆‍♂️🙆‍♂️ 다크모드 감지
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document
+          .getElementById("goormstrap-stylesheet")
+          .setAttribute(
+            "href",
+            "https://statics.goorm.io/css/goormstrap.dark.min.css"
+          );
+      }
+      const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
+      mediaQueryList.addEventListener("change", (e) => {
+        if (e.matches) {
+          document
+            .getElementById("goormstrap-stylesheet")
+            .setAttribute(
+              "href",
+              "https://statics.goorm.io/css/goormstrap.dark.min.css"
+            );
+        } else {
+          document
+            .getElementById("goormstrap-stylesheet")
+            .setAttribute(
+              "href",
+              "https://statics.goorm.io/css/goormstrap.v4.min.css"
+            );
+        }
+      });
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.
